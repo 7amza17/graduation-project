@@ -864,9 +864,6 @@ class AppPropertiesData {
       ];
 }
 
-/// =======================================================
-/// ✅ صفحة البحث الجديدة (قائمة نتائج مثل المفضلة + تفتح تفاصيل العقار عند الضغط)
-/// =======================================================
 class PropertySearchPage extends StatefulWidget {
   final List<PropertyItem> allProperties;
   final String logoAsset;
@@ -916,7 +913,6 @@ class _PropertySearchPageState extends State<PropertySearchPage> {
       child: Scaffold(
         backgroundColor: bg,
 
-        // ✅ نفس تنسيق AppBar بالضبط
         appBar: AppBar(
           backgroundColor: bg,
           elevation: 0,
@@ -961,7 +957,7 @@ class _PropertySearchPageState extends State<PropertySearchPage> {
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 6, 16, 8),
               child: Container(
-                height: 48, // ✅ أصغر من قبل
+                height: 48,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(16),
@@ -983,12 +979,12 @@ class _PropertySearchPageState extends State<PropertySearchPage> {
                     setState(() => _query = v);
                   },
                   textDirection: TextDirection.rtl,
-                  style: const TextStyle(fontSize: 14), // ✅ أصغر
+                  style: const TextStyle(fontSize: 14), 
                   decoration: InputDecoration(
                     hintText: "ابحث عن عقار...",
                     hintStyle: TextStyle(
                       color: Colors.black.withOpacity(0.45),
-                      fontSize: 13, // ✅ أصغر
+                      fontSize: 13, 
                     ),
                     prefixIcon:
                         const Icon(Icons.search, color: Colors.teal, size: 20),
@@ -1003,7 +999,7 @@ class _PropertySearchPageState extends State<PropertySearchPage> {
                             },
                           ),
                     border: InputBorder.none,
-                    isDense: true, // ✅ يقلل الارتفاع الداخلي
+                    isDense: true, 
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 10,
                       vertical: 12,
@@ -1033,8 +1029,7 @@ class _PropertySearchPageState extends State<PropertySearchPage> {
                       padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
                       childAspectRatio: 0.87,
                       children: results.map((p) {
-                        // ✅ نفس عرض المفضلة/القائمة: PropertyCard
-                        // والضغط على الكارد رح يفتح تفاصيل العقار كما هو عندك داخل PropertyCard
+                       
                         return PropertyCard(
                           title: p.title,
                           tag: p.tag,
