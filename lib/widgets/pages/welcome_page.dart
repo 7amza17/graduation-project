@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'promo_home_page.dart'; // ← اسم الصفحة التي تريد الانتقال إليها
+import 'promo_home_page.dart'; 
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -19,7 +19,7 @@ class WelcomePage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: bg,
         body: GestureDetector(
-          onTap: () => _goToMainMenu(context), // الانتقال عند الضغط في أي مكان
+          onTap: () => _goToMainMenu(context), 
           behavior: HitTestBehavior.opaque,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16),
