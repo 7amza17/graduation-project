@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:flutter/services.dart'; // ✅ UX: Haptic + Press
+import 'package:flutter/services.dart'; 
 
 class DeveloperContactPage extends StatelessWidget {
   const DeveloperContactPage({super.key});
 
-  // فتح رابط خارجي (LinkedIn / انستا / فيسبوك / جيميل ويب ...)
   Future<void> _openUrl(String url) async {
     final uri = Uri.parse(url);
     await launchUrl(uri, mode: LaunchMode.externalApplication);
   }
 
-  // اتصال هاتفي
   Future<void> _callPhone(String phone) async {
     final uri = Uri.parse('tel:$phone');
     await launchUrl(uri);
   }
 
-  // إرسال إيميل (نستخدمه لفتح تطبيق الإيميل مباشرة)
   Future<void> _sendEmail(String email) async {
     final uri = Uri(
       scheme: 'mailto',
@@ -29,7 +26,6 @@ class DeveloperContactPage extends StatelessWidget {
 
   // واتساب
   Future<void> _openWhatsApp(String phone) async {
-    // رقم واتساب بصيغة دولية بدون +
     final uri = Uri.parse('https://wa.me/$phone');
     await launchUrl(uri, mode: LaunchMode.externalApplication);
   }
@@ -60,7 +56,6 @@ class DeveloperContactPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // ================= هيرو كارد جذّابة في الأعلى =================
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
                 decoration: BoxDecoration(
@@ -87,7 +82,6 @@ class DeveloperContactPage extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        // الصورة — عاليمين
                         Container(
                           width: 70,
                           height: 70,
@@ -108,7 +102,6 @@ class DeveloperContactPage extends StatelessWidget {
                         ),
                         const SizedBox(width: 16),
 
-                        // النصوص — محاذاة لليسار
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -154,7 +147,6 @@ class DeveloperContactPage extends StatelessWidget {
 
               const SizedBox(height: 26),
 
-              // ================= قسم: قنوات رئيسية (إيميل + LinkedIn) =================
               const Text(
                 "قنوات رئيسية",
                 textAlign: TextAlign.center,
@@ -203,7 +195,6 @@ class DeveloperContactPage extends StatelessWidget {
 
               const SizedBox(height: 16),
 
-              // ✅ اتصال هاتفي: نفس تنسيق الانستا (أيقونة بالمنتصف وتحتها النص) وبعرض كامل
               _buildFullWidthSocialCentered(
                 title: "اتصال هاتفي",
                 icon: Icons.phone_in_talk,
@@ -213,7 +204,6 @@ class DeveloperContactPage extends StatelessWidget {
 
               const SizedBox(height: 28),
 
-              // ================= قسم: حسابات التواصل الاجتماعي =================
               const Text(
                 "حسابات التواصل الاجتماعي",
                 textAlign: TextAlign.center,
@@ -255,7 +245,6 @@ class DeveloperContactPage extends StatelessWidget {
 
               const SizedBox(height: 12),
 
-              // ✅ Instagram: أيقونة بالمنتصف وتحتها الكلمة + بدون سهم + عرض كامل
               _buildFullWidthSocialCentered(
                 title: "Instagram",
                 icon: FontAwesomeIcons.instagram,
@@ -269,7 +258,6 @@ class DeveloperContactPage extends StatelessWidget {
 
               const SizedBox(height: 30),
 
-              // ================= جملة تشجيع أخيرة =================
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 decoration: BoxDecoration(
@@ -293,7 +281,6 @@ class DeveloperContactPage extends StatelessWidget {
     );
   }
 
-  // زر رئيسي (إيميل / LinkedIn) — بدون نص ثانوي
   Widget _buildPrimaryActionButton({
     required String title,
     required IconData icon,
@@ -353,7 +340,6 @@ class DeveloperContactPage extends StatelessWidget {
     );
   }
 
-  // ✅ كرت سوشيال مرن (يعبّي المساحة داخل Row)
   Widget _buildSocialCardFlexible({
     required String title,
     required IconData icon,
@@ -413,7 +399,6 @@ class DeveloperContactPage extends StatelessWidget {
     );
   }
 
-  // ✅ كرت Full Width: أيقونة بالمنتصف + النص تحتها (مثل ما طلبت للانستا والهاتف)
   Widget _buildFullWidthSocialCentered({
     required String title,
     required IconData icon,
@@ -475,10 +460,7 @@ class DeveloperContactPage extends StatelessWidget {
   }
 }
 
-// =======================================================
-// ✅ UX Press: Scale + Splash/Highlight + Haptic
-// (تستعمله لكل الأزرار والكروت هون)
-// =======================================================
+
 class _UxPress extends StatefulWidget {
   final Widget child;
   final VoidCallback onTap;
