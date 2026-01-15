@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class Property {
   final String id;
   final String title;
-  final String tag; // بيع / إيجار
+  final String tag; 
   final Color tagColor;
-  final String price; // نص مثل "150,000$" أو "200$ شهرياً"
-  final int priceValue; // رقم للفلترة
-  final int areaValue;  // رقم للفلترة
-  final String areaText; // "120 م²"
+  final String price; 
+  final int priceValue;
+  final int areaValue;    
+  final String areaText; 
   final String location;
   final String description;
   final String phone;
