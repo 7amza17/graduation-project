@@ -4,8 +4,7 @@ import 'package:panorama_viewer/panorama_viewer.dart';
 class VRTourPage extends StatefulWidget {
   final String title;
 
-  /// قائمة الصور البانورامية لكل غرفة
-  final List<String> images;
+   final List<String> images;
 
   const VRTourPage({super.key, required this.title, required this.images});
 
@@ -16,8 +15,7 @@ class VRTourPage extends StatefulWidget {
 class _VRTourPageState extends State<VRTourPage> {
   int _currentIndex = 0;
 
-  // قيم فقط لو حبيت تظهر إحداثيات المشهد (اختياري)
-  double _lon = 0;
+   double _lon = 0;
   double _lat = 0;
   double _tilt = 0;
   bool _showDebugInfo = false;
@@ -37,8 +35,7 @@ class _VRTourPageState extends State<VRTourPage> {
     });
   }
 
-  /// زر دائري جميل يُستخدم كنقطة (Hotspot) داخل الصورة
-  Widget _hotspotButton({
+   Widget _hotspotButton({
     required String text,
     required IconData icon,
     required VoidCallback onPressed,
@@ -74,8 +71,7 @@ class _VRTourPageState extends State<VRTourPage> {
     final bool hasNext = _currentIndex < widget.images.length - 1;
     final bool hasPrev = _currentIndex > 0;
 
-    // نقطة "الغرفة التالية"
-    if (hasNext) {
+     if (hasNext) {
       hotspots.add(
         Hotspot(
           latitude: 0.0,
@@ -91,8 +87,7 @@ class _VRTourPageState extends State<VRTourPage> {
       );
     }
 
-    // نقطة "الغرفة السابقة"
-    if (hasPrev) {
+     if (hasPrev) {
       hotspots.add(
         Hotspot(
           latitude: 0.0,
@@ -123,8 +118,7 @@ class _VRTourPageState extends State<VRTourPage> {
           style: const TextStyle(fontSize: 16),
         ),
         actions: [
-          // زر صغير لتبديل إظهار معلومات الإحداثيات (اختياري)
-          IconButton(
+           IconButton(
             icon: Icon(
               _showDebugInfo ? Icons.visibility_off : Icons.visibility,
             ),
@@ -138,26 +132,19 @@ class _VRTourPageState extends State<VRTourPage> {
       ),
       body: Stack(
         children: [
-          // 👇 بانوراما واحدة فقط – لا PageView
-          PanoramaViewer(
-            // سرعة الحركة
-            animSpeed: 0.1,
+           PanoramaViewer(
+             animSpeed: 0.1,
 
-            // أهم سطر: التحكّم بحركة الكاميرا من خلال حركة الهاتف
-            sensorControl: SensorControl.orientation,
+             sensorControl: SensorControl.orientation,
 
-            // لو حابب تعرف إحداثيات المكان الذي تنظر إليه
-            onViewChanged: _onViewChanged,
+             onViewChanged: _onViewChanged,
 
-            // النقاط الداخلية بين الغرف
-            hotspots: _buildHotspots(),
+             hotspots: _buildHotspots(),
 
-            // الصورة الحالية (الغرفة الحالية)
-            child: Image.asset(currentImage),
+             child: Image.asset(currentImage),
           ),
 
-          // مؤشر رقم الغرفة
-          Positioned(
+           Positioned(
             top: 20,
             right: 20,
             child: CircleAvatar(
@@ -169,8 +156,7 @@ class _VRTourPageState extends State<VRTourPage> {
             ),
           ),
 
-          // نص الإحداثيات في الأسفل (للدebug فقط)
-          if (_showDebugInfo)
+           if (_showDebugInfo)
             Positioned(
               left: 10,
               bottom: 10,
