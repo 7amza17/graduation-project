@@ -14,14 +14,13 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   late AnimationController _splashController;
   late AnimationController _loaderController;
 
-  // التحكم بالتباعد بين النقاط
-  double dotSpacing = 10; // ← عدّل الرقم اللي بدك إياه
+
+  double dotSpacing = 10;
 
   @override
   void initState() {
     super.initState();
 
-    // Splash مدة
     _splashController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),
@@ -35,7 +34,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       }
     });
 
-    // Loader Animation (YouTube-like)
     _loaderController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 900),
@@ -59,9 +57,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         backgroundColor: Colors.white,
         body: Stack(
           children: [
-            // -----------------------------
-            //       اللوغو ثابت
-            // -----------------------------
+      
             Center(
               child: SizedBox(
                 height: 150,
@@ -72,9 +68,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               ),
             ),
 
-            // -----------------------------
-            //   Loader مثل يوتيوب (3 نقاط)
-            // -----------------------------
+ 
             Positioned(
               bottom: height * 0.28,
               left: 0,
@@ -110,18 +104,13 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     );
   }
 
-  // -----------------------------
-  //      نقطة Loader مثل يوتيوب
-  //  (نبض + طلوع/نزول ناعم)
-  // -----------------------------
+
   Widget _buildYoutubeDot(double t, double shift, {required Color color}) {
-    // موجة ناعمة 0..1
     final v = (math.sin((t + shift) * 2 * math.pi) + 1) / 2;
 
-    // نبض الحجم + حركة بسيطة للأعلى
-    final double scale = 0.85 + (0.45 * v); // 0.85 .. 1.30
-    final double dy = -6 * v; // تطلع لفوق شوي
-    final double opacity = 0.55 + (0.45 * v); // 0.55 .. 1.0
+    final double scale = 0.85 + (0.45 * v); 
+    final double dy = -6 * v; 
+    final double opacity = 0.55 + (0.45 * v); 
 
     return Transform.translate(
       offset: Offset(0, dy),
