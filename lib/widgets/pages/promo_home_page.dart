@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:SMADI/managers/favorites_page.dart';
 import 'main_menu_page.dart';
 import 'developer_contact_page.dart';
-import 'package:flutter/services.dart'; // ✅ للهزّة
+import 'package:flutter/services.dart';
 
 class PromoHomePage extends StatefulWidget {
   const PromoHomePage({super.key});
@@ -36,8 +36,7 @@ class _PromoHomePageState extends State<PromoHomePage>
   void initState() {
     super.initState();
 
-    // أنيميشن الأسهم ^
-    _arrowController = AnimationController(
+     _arrowController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 1),
     )..repeat(reverse: true);
@@ -50,8 +49,7 @@ class _PromoHomePageState extends State<PromoHomePage>
       CurvedAnimation(parent: _arrowController, curve: Curves.easeInOut),
     );
 
-    // سلايدر الإعلانات
-    _timer = Timer.periodic(const Duration(milliseconds: 3500), (_) {
+     _timer = Timer.periodic(const Duration(milliseconds: 3500), (_) {
       if (!_adsController.hasClients) return;
       int next = (_currentIndex + 1) % adsImages.length;
 
@@ -81,8 +79,7 @@ class _PromoHomePageState extends State<PromoHomePage>
     );
   }
 
-  // ✅ فتح صفحة البحث الجديدة (قائمة نتائج مثل المفضلة)
-  Future<void> _openSearch() async {
+   Future<void> _openSearch() async {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -95,8 +92,7 @@ class _PromoHomePageState extends State<PromoHomePage>
     );
   }
 
-  // فتح نافذة المطوّر (UX سحب + Snap + Full Screen) + بدون ما يطلع المحتوى فاضي
-  Future<void> _openDeveloperContactSheet() async {
+   Future<void> _openDeveloperContactSheet() async {
     if (_isContactSheetOpen) return;
 
     setState(() => _isContactSheetOpen = true);
@@ -191,17 +187,14 @@ class _PromoHomePageState extends State<PromoHomePage>
         drawerEnableOpenDragGesture: true,
         drawerEdgeDragWidth: MediaQuery.of(context).size.width * 0.25,
 
-        // ✅ AppBar (نفس اللي وصلناله)
-        appBar: AppBar(
+         appBar: AppBar(
           backgroundColor: bg,
           elevation: 0,
           automaticallyImplyLeading: false,
           titleSpacing: 12,
           title: Row(
             children: [
-              // =========================
-              // ☰ زر القائمة
-              // =========================
+        
               Builder(
                 builder: (context) {
                   return IconButton(
@@ -215,10 +208,7 @@ class _PromoHomePageState extends State<PromoHomePage>
                   );
                 },
               ),
-
-              // =========================
-              // 🔍 البحث (يفتح صفحة البحث الجديدة)
-              // =========================
+ 
               IconButton(
                 icon: const Icon(
                   Icons.search,
@@ -227,9 +217,7 @@ class _PromoHomePageState extends State<PromoHomePage>
                 onPressed: _openSearch,
               ),
 
-              // =========================
-              // النص
-              // =========================
+       
               const Text(
   "Smadi Real Estate",
   style: TextStyle(
@@ -241,14 +229,10 @@ class _PromoHomePageState extends State<PromoHomePage>
 ),
 
 
-              // =========================
-              // يدفع اللوغو لأقصى زاوية
-              // =========================
+               
               const Spacer(),
 
-              // =========================
-              // LOGO (زاوية الشاشة)
-              // =========================
+             
               Image.asset(
                 'assets/images/logo1.png',
                 height: 30,
@@ -537,8 +521,7 @@ return Padding(
   child: Column(
     mainAxisSize: MainAxisSize.min,
     children: [
-      // ✅ الإيموجيات فوق
-      SizedBox(
+       SizedBox(
         height: 20,
         child: Stack(
           alignment: Alignment.center,
@@ -574,8 +557,7 @@ return Padding(
 
       const SizedBox(height: 2),
 
-      // ✅ النص تحت الإيموجيات
-      const Text(
+       const Text(
         "التواصل مع المطوّر",
         style: TextStyle(
           fontSize: 15,
@@ -598,10 +580,7 @@ return Padding(
     );
   }
 }
-
-// =======================================================
-// ✅ Widget صغير: نفس UX تبع الكارد (Scale + Splash + Haptic)
-// =======================================================
+ 
 class _UxPress extends StatefulWidget {
   final Widget child;
   final VoidCallback onTap;
